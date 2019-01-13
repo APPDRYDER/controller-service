@@ -1,0 +1,12 @@
+[Unit]
+Description=AppDynamics Controller
+After=appd-events-service.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/appd-ctl.sh controller start
+ExecStop=/usr/bin/appd-ctl.sh  controller stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

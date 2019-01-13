@@ -1,0 +1,11 @@
+[Unit]
+Description=AppDynamics eConsole
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/appd-ctl.sh econsole start
+ExecStop=/usr/bin/appd-ctl.sh  econsole stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
