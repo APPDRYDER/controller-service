@@ -52,6 +52,20 @@ econsole_stop() {
   echo "$APP_NAME stop complete "`date`     >> $APPD_LOG_FILE
 }
 
+all_start() {
+  echo "Starting $APP_NAME "`date`          >> $APPD_LOG_FILE
+  econsole_start
+  events_service_start
+  controller_start
+}
+
+all_stop() {
+  echo "Stopping $APP_NAME "`date`          >> $APPD_LOG_FILE
+  controller_stop
+  events_service_stop
+  econsole_stop
+}
+
 SERVICE_NAME=$1
 SERVICE_CMD=$2
 APP_NAME="AppDynamics "$SERVICE_NAME
@@ -60,5 +74,6 @@ case $SERVICE_NAME in
   econsole)       "$SERVICE_NAME"_"$SERVICE_CMD" ;;
   events_service) "$SERVICE_NAME"_"$SERVICE_CMD" ;;
   controller)     "$SERVICE_NAME"_"$SERVICE_CMD" ;;
+  all)            "$SERVICE_NAME"_"$SERVICE_CMD" ;;
   *)              echo "Commands unknown: ""$SERVICE_NAME"_"$SERVICE_CMD"
 esac
