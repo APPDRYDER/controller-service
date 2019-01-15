@@ -54,16 +54,16 @@ econsole_stop() {
 
 all_start() {
   echo "Starting $APP_NAME "`date`          >> $APPD_LOG_FILE
-  econsole_start
-  events_service_start
-  controller_start
+  sudo systemctl start appd-econsole
+  sudo systemctl start appd-events-service
+  sudo systemctl start appd-controller
 }
 
 all_stop() {
   echo "Stopping $APP_NAME "`date`          >> $APPD_LOG_FILE
-  controller_stop
-  events_service_stop
-  econsole_stop
+  sudo systemctl stop appd-controller
+  sudo systemctl stop appd-events-service
+  sudo systemctl stop appd-econsole
 }
 
 SERVICE_NAME=$1
