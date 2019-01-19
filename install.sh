@@ -11,6 +11,10 @@ _installService() {
 sudo cp appd-ctl.sh  /usr/bin
 sudo chmod +x /usr/bin/appd-ctl.sh
 
+# Create envvar file
+env | grep "APPD_" > appd-ctl-envars.sh
+sudo cp -f appd-ctl-envars.sh /usr/bin/
+
 # Install services
 _installService "appd-controller"
 _installService "appd-econsole"

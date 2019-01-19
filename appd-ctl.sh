@@ -1,13 +1,16 @@
 #!/bin/bash
 #
-APPD_BASE_DIR=/home/ddr/appdynamics
-APPD_VERSION=4.5.2
-APPD_CONTROLLER_NAME=controller2
+
+# Source envvars
+. /usr/bin/appd-ctl-envars.sh
+#APPD_BASE_DIR=/home/ddr/appdynamics
+#APPD_VERSION=4.5.2
+#APPD_CONTROLLER_NAME=controller2
 APPD_CONTROLLER_BIN=$APPD_BASE_DIR/$APPD_VERSION/$APPD_CONTROLLER_NAME/controller/bin
 APPD_PLATFORM_ADMIN_BIN=$APPD_BASE_DIR/$APPD_VERSION/platform/platform-admin/bin
-APPD_PLATFORM_NAME="controller2"
-APPD_CONTROLLER_ADMIN=admin
-APPD_UNIVERSAL_PWD=welcome1
+APPD_PLATFORM_NAME=$APPD_CONTROLLER_NAME
+#APPD_CONTROLLER_ADMIN=admin
+#APPD_UNIVERSAL_PWD=welcome1
 APPD_LOG_FILE=/var/log/appd-log.txt
 
 controller_start() {
