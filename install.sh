@@ -13,7 +13,7 @@ sudo chmod +x /usr/bin/appd-ctl.sh
 
 # Create envvar file
 env | grep "APPD_" > appd-ctl-envars.sh
-sudo cp -f appd-ctl-envars.sh /usr/bin/
+sudo cp -f appd-ctl-envars.sh /usr/bin/appd-ctl-envars.sh
 
 # Install services
 _installService "appd-controller"

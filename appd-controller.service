@@ -1,6 +1,6 @@
 [Unit]
 Description=AppDynamics Controller
-After=ssh.service
+After=appd-econsole.service
 
 [Service]
 Type=oneshot
