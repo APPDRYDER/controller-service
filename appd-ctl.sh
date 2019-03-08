@@ -20,7 +20,8 @@ _appd_ctl_service() {
   $APPD_PLATFORM_ADMIN_BIN/platform-admin.sh login --user-name  $APPD_CONTROLLER_ADMIN --password $APPD_UNIVERSAL_PWD
   $APPD_PLATFORM_ADMIN_BIN/platform-admin.sh submit-job \
                     --platform-name $APPD_PLATFORM_NAME --service $SERVICE_NAME \
-                    --job $COMMAND --args controllerProcessTimeoutInMin=TIMEOUT_MINUTES
+                    --job $COMMAND
+  # --args controllerProcessTimeoutInMin=TIMEOUT_MINUTES
 }
 
 controller_start() {
@@ -75,6 +76,9 @@ all_check() {
 
   # Check Enconsole
   curl localhost:9191/service/version
+
+  # Check controller
+  curl http://localhost:8090/controller/rest/serverstatus
 }
 
 SERVICE_NAME=$1
