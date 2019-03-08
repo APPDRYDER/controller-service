@@ -11,4 +11,4 @@ RemainAfterExit=yes
 
 
 [Install]
-WantedBy=appd-events-service.service
+WantedBy=multi-user.target
