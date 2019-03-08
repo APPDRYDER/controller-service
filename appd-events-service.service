@@ -1,7 +1,7 @@
 [Unit]
 Description=AppDynamics Events Service
-After=appd-econsole.service
-Before=appd-econsole.service
+After=appd-controller.service
+Before=appd-controller.service
 
 [Service]
 Type=simple
