@@ -1,5 +1,6 @@
 [Unit]
 Description=AppDynamics Events Service
+Requires=appd-econsole.service
 After=appd-controller.service
 Before=appd-controller.service
 

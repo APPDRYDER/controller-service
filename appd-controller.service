@@ -1,5 +1,6 @@
 [Unit]
 Description=AppDynamics Controller
+Requires=appd-econsole.service
 After=appd-econsole.service
 Before=appd-econsole.service
 
