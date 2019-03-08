@@ -13,7 +13,10 @@ sudo chmod +x /usr/bin/appd-ctl.sh
 
 # Create envvar file
 env | grep "APPD_" > appd-ctl-envars.sh
-sudo cp -f appd-ctl-envars.sh /usr/bin/appd-ctl-envars.sh
+sudo mkdir /etc/appdynamics
+sudo cp -f appd-ctl-envars.sh /etc/appdynamics/appd-ctl-envars.sh
+
+echo "Installing for base dir: $APPD_BASE_DIR"
 
 # Install services
 _installService "appd-controller"

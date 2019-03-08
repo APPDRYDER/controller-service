@@ -1,12 +1,13 @@
 [Unit]
 Description=AppDynamics eConsole
-After=ssh.service
+After=multi-user.target
+Before=multi-user.target
 
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/appd-ctl.sh econsole start
 ExecStop=/usr/bin/appd-ctl.sh  econsole stop
-RemainAfterExit=yes
+RemainAfterExit=no
 
 [Install]
 WantedBy=multi-user.target
