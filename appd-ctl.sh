@@ -81,6 +81,12 @@ all_check() {
   curl http://localhost:8090/controller/rest/serverstatus
 }
 
+commands_help() {
+  echo "econsole stop | start"
+  echo "events_service stop | start"
+  echo "controller stop | start"
+}
+
 SERVICE_NAME=$1
 SERVICE_CMD=$2
 APP_NAME="AppDynamics "$SERVICE_NAME
@@ -90,5 +96,5 @@ case $SERVICE_NAME in
   events_service) "$SERVICE_NAME"_"$SERVICE_CMD" ;;
   controller)     "$SERVICE_NAME"_"$SERVICE_CMD" ;;
   all)            "$SERVICE_NAME"_"$SERVICE_CMD" ;;
-  *)              echo "Commands unknown: ""$SERVICE_NAME"_"$SERVICE_CMD"
+  *)              commands_help                 ;;
 esac

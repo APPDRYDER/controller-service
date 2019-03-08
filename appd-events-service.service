@@ -4,11 +4,11 @@ After=appd-econsole.service
 Before=appd-econsole.service
 
 [Service]
-Type=oneshot
+Type=simple
 ExecStart=/usr/bin/appd-ctl.sh events_service start
 ExecStop=/usr/bin/appd-ctl.sh  events_service stop
-RemainAfterExit=no
+RemainAfterExit=yes
 
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=appd-econsole.service
