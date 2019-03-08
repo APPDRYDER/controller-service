@@ -10,4 +10,4 @@ ExecStop=/usr/bin/appd-ctl.sh  controller stop
 RemainAfterExit=yes
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=appd-controller.service

@@ -85,6 +85,7 @@ commands_help() {
   echo "econsole stop | start"
   echo "events_service stop | start"
   echo "controller stop | start"
+  wxho "all stop | start"
 }
 
 SERVICE_NAME=$1

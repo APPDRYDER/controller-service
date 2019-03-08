@@ -11,4 +11,4 @@ RemainAfterExit=yes
 
 
 [Install]
-WantedBy=appd-econsole.service
+WantedBy=appd-events-service.service
