@@ -21,6 +21,6 @@ sudo cp -f appd-ctl-envars.sh /etc/appdynamics/appd-ctl-envars.sh
 echo "Installing for base dir: $APPD_BASE_DIR"
 
 # Install services
-_installService "appd-controller"
-_installService "appd-econsole"
-_installService "appd-events-service"
+_installService "appd-controller.service"
+_installService "appd-econsole.service"
+_installService "appd-events-service.service"

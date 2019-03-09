@@ -4,6 +4,8 @@ Requires=appd-econsole.service
 After=appd-econsole.service
 
 [Service]
+Type=oneshot
+RemainAfterExit=yes
 ExecStart=/usr/bin/appd-ctl.sh events_service start
 ExecStop=/usr/bin/appd-ctl.sh  events_service stop
 
