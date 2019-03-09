@@ -1,11 +1,11 @@
 [Unit]
 Description=AppDynamics Controller
 Requires=appd-econsole.service
-After=multi-user.target
+After=appd-econsole.service multi-user.target
 
 [Service]
 Type=oneshot
-RemainAfterExit=no
+RemainAfterExit=yes
 ExecStart=/usr/bin/appd-ctl.sh controller start
 ExecStop=/usr/bin/appd-ctl.sh  controller stop
 

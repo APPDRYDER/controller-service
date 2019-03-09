@@ -8,15 +8,21 @@
 
 # Source envvars
 . /etc/appdynamics/appd-ctl-envars.sh
-APPD_CONTROLLER_BIN=$APPD_BASE_DIR/$APPD_CONTROLLER_NAME/controller/bin
-APPD_PLATFORM_ADMIN_BIN=$APPD_BASE_DIR/platform/platform-admin/bin
-APPD_PLATFORM_NAME=$APPD_CONTROLLER_NAME
 
+
+
+_validateEnvironmentVars() {
+  VAR_LIST=("$@") # rebuild using all args
+  for i in "${VAR_LIST[@]}"; do
+     [ -z ${!i} ] && { echo "Environment variable not set: $i"; ERROR="1"; }
+  done
+  [ "$ERROR" == "1" ] && { echo "Exiting"; exit 1; }
+}
 
 _appd_ctl_service() {
   SERVICE_NAME=$1
   COMMAND=$2
-  TIMEOUT_MINUTES=${1:-"16"}
+  TIMEOUT_MINUTES=${3:-"16"}
   $APPD_PLATFORM_ADMIN_BIN/platform-admin.sh login --user-name  $APPD_CONTROLLER_ADMIN --password $APPD_UNIVERSAL_PWD
   $APPD_PLATFORM_ADMIN_BIN/platform-admin.sh submit-job \
                     --platform-name $APPD_PLATFORM_NAME --service $SERVICE_NAME \
@@ -70,6 +76,12 @@ all_stop() {
   sudo systemctl stop appd-econsole
 }
 
+all_status() {
+  sudo systemctl status appd-econsole
+  sudo systemctl status appd-events-service.service
+  sudo systemctl status appd-controller
+}
+
 all_check() {
   # Check Analyics Agent
   curl http://localhost:9091/healthcheck?pretty=true
@@ -86,7 +98,15 @@ commands_help() {
   echo "events_service stop | start"
   echo "controller stop | start"
   echo "all stop | start"
+  echo "all status"
 }
+
+_validateEnvironmentVars APPD_BASE_DIR APPD_CONTROLLER_NAME APPD_CONTROLLER_ADMIN APPD_UNIVERSAL_PWD
+
+APPD_CONTROLLER_BIN=$APPD_BASE_DIR/$APPD_CONTROLLER_NAME/controller/bin
+APPD_PLATFORM_ADMIN_BIN=$APPD_BASE_DIR/platform/platform-admin/bin
+APPD_PLATFORM_NAME=$APPD_CONTROLLER_NAME
+
 
 SERVICE_NAME=$1
 SERVICE_CMD=$2
@@ -99,3 +119,5 @@ case $SERVICE_NAME in
   all)            "$SERVICE_NAME"_"$SERVICE_CMD" ;;
   *)              commands_help                 ;;
 esac
+
+exit 0

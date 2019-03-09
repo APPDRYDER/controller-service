@@ -1,11 +1,11 @@
 [Unit]
 Description=AppDynamics Events Service
 Requires=appd-econsole.service
-After=multi-user.target
+After=appd-econsole.service multi-user.target
 
 [Service]
 Type=oneshot
-RemainAfterExit=no
+RemainAfterExit=yes
 ExecStart=/usr/bin/appd-ctl.sh events_service start
 ExecStop=/usr/bin/appd-ctl.sh  events_service stop
 
