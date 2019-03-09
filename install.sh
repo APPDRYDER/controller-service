@@ -3,6 +3,8 @@
 _installService() {
     SERVICE_NAME=$1
     echo "Installing $SERVICE_NAME"
+    sudo systemctl disable $SERVICE_NAME
+
     sudo cp $SERVICE_NAME.service /etc/systemd/system
     sudo systemctl enable $SERVICE_NAME
 }

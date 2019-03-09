@@ -3,7 +3,7 @@ Description=AppDynamics Events Service
 After=appd-econsole.service
 
 [Service]
-Type=oneshot
+Type=simple
 ExecStart=/usr/bin/appd-ctl.sh events_service start
 ExecStop=/usr/bin/appd-ctl.sh  events_service stop
 RemainAfterExit=yes

@@ -3,7 +3,7 @@ Description=AppDynamics Controller
 After=appd-econsole.service
 
 [Service]
-Type=oneshot
+Type=simple
 ExecStart=/usr/bin/appd-ctl.sh controller start
 ExecStop=/usr/bin/appd-ctl.sh  controller stop
 RemainAfterExit=yes
