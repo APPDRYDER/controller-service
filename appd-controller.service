@@ -1,7 +1,7 @@
 [Unit]
 Description=AppDynamics Controller
 Requires=appd-econsole.service
-After=appd-econsole.service multi-user.target
+After=appd-econsole.service appd-events-service.service multi-user.target
 
 [Service]
 Type=oneshot
