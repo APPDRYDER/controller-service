@@ -6,6 +6,7 @@ After=appd-econsole.service appd-events-service.service multi-user.target
 [Service]
 Type=oneshot
 RemainAfterExit=yes
+TimeoutSec=900
 ExecStart=/usr/bin/appd-ctl.sh controller start
 ExecStop=/usr/bin/appd-ctl.sh  controller stop
 

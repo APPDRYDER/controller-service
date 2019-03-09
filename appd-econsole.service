@@ -5,6 +5,7 @@ After=multi-user.target
 [Service]
 Type=oneshot
 RemainAfterExit=yes
+TimeoutSec=300
 ExecStart=/usr/bin/appd-ctl.sh econsole start
 ExecStop=/usr/bin/appd-ctl.sh  econsole stop
 
