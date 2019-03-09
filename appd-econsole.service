@@ -3,10 +3,8 @@ Description=AppDynamics eConsole
 After=multi-user.target
 
 [Service]
-Type=simple
 ExecStart=/usr/bin/appd-ctl.sh econsole start
 ExecStop=/usr/bin/appd-ctl.sh  econsole stop
-RemainAfterExit=no
 
 [Install]
 WantedBy=multi-user.target
