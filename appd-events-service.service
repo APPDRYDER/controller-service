@@ -6,7 +6,7 @@ After=appd-econsole.service
 Type=simple
 ExecStart=/usr/bin/appd-ctl.sh events_service start
 ExecStop=/usr/bin/appd-ctl.sh  events_service stop
-RemainAfterExit=yes
+RemainAfterExit=no
 
 
 [Install]
