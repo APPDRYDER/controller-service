@@ -1,6 +1,6 @@
 [Unit]
 Description=AppDynamics Events Service
-After=appd-controller.service
+After=appd-econsole.service
 
 [Service]
 Type=oneshot
